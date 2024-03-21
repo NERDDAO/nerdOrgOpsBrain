@@ -6,9 +6,11 @@ kanban-plugin: basic
 
 ## NerdWorkState_ProjectBench
 
-- [ ] AI_U
-- [ ] Strudel
-- [ ] Lens
+- [ ] [[NerdWork State/Projects/GenArt/AI_U/README | AI_U]]
+- [ ] [[NerdWork State/Projects/DeSci/Strudel/README.md | Strudel]]
+- [ ] [[NerdWork State/Projects/DeSci/Bonsai/README.md | Bonsai]]
+- [ ] [[NerdWork State/Projects/HaikuCRM/README.md | Haiku]]
+- [ ] [[NerdWork State/Projects/NERD/README.md | NERD]]
 
 
 ## Active Sprint
