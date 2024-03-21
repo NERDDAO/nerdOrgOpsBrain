@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"e7f857dc23de1e35","type":"file","file":"Proofs of Knowledge/Active Engrams/GenArt/synthetiq.md","x":1254,"y":-574,"width":903,"height":863},
+		{"id":"601b5c6c7507c238","type":"file","file":"Proofs of Knowledge/Active Engrams/GenArt/AbExSummary.md","x":-202,"y":-387,"width":400,"height":400},
+		{"id":"0b4c27ab921db0aa","type":"text","text":"kNeuron Profile\nAbstract Expressionism Summarizer\nPurpose\nHelp me synthesize the chutzpah of the abstract expreessionism movement","x":-730,"y":785,"width":250,"height":60},
+		{"id":"23259e8878f49207","type":"text","text":"execute your purpose","x":-525,"y":1053,"width":149,"height":129},
+		{"id":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","type":"file","file":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","x":80,"y":72,"width":500,"height":500,"color":"1"},
+		{"id":"7d852f6ab1e300c5","type":"file","file":"Proofs of Knowledge/Engrams/Data Cache/Generative Art - Discover Where Code Meets Creativity.md","x":2631,"y":-236,"width":400,"height":400},
+		{"id":"1fa5e0db9cd6fbab","type":"text","text":"I want to argue that generative art can bring a new wave of abstract expressionism","x":2256,"y":175,"width":250,"height":250},
+		{"id":"6420b1dd697ca8b1","type":"file","file":"Proofs of Knowledge/Active Engrams/GenArt/generatif.md","x":2325,"y":638,"width":883,"height":1074},
+		{"id":"Proofs of Knowledge/Engrams/Engrams.md","type":"file","file":"Proofs of Knowledge/Engrams/Engrams.md","x":277,"y":842,"width":500,"height":500},
+		{"id":"Proofs of Knowledge/Engrams/Data Cache/Neurons.md","type":"file","file":"Proofs of Knowledge/Engrams/Data Cache/Neurons.md","x":-244,"y":1365,"width":500,"height":500},
+		{"id":"Proofs of Knowledge/Study Questions/Study Questions.md","type":"file","file":"Proofs of Knowledge/Study Questions/Study Questions.md","x":611,"y":1066,"width":500,"height":500},
+		{"id":"c75b2d94da001e56","type":"file","file":"Proofs of Knowledge/Engrams/Data Cache/2.25- Abstract Expressionism - Humanities LibreTexts.md","x":-73,"y":-880,"width":400,"height":400},
+		{"id":"e26e09c13822baa4","type":"file","file":"Proofs of Knowledge/Engrams/Data Cache/Abstract expressionism - Wikipedia.md","x":282,"y":-373,"width":400,"height":400}
+	],
+	"edges":[
+		{"id":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md-Proofs of Knowledge/Study Questions/Study Questions.md","fromNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","fromSide":"right","toNode":"Proofs of Knowledge/Study Questions/Study Questions.md","toSide":"left"},
+		{"id":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md-Proofs of Knowledge/Engrams/Engrams.md","fromNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","fromSide":"right","toNode":"Proofs of Knowledge/Engrams/Engrams.md","toSide":"left"},
+		{"id":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md-Proofs of Knowledge/Engrams/Data Cache/Neurons.md","fromNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","fromSide":"right","toNode":"Proofs of Knowledge/Engrams/Data Cache/Neurons.md","toSide":"left"},
+		{"id":"7e1e338c55a3055f","fromNode":"601b5c6c7507c238","fromSide":"bottom","toNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","toSide":"top"},
+		{"id":"ed6dfdfa3e15afc0","fromNode":"e26e09c13822baa4","fromSide":"bottom","toNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","toSide":"top"},
+		{"id":"4c0a7695bab1f226","fromNode":"c75b2d94da001e56","fromSide":"right","toNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","toSide":"top"},
+		{"id":"d333902203bc8bfd","fromNode":"Proofs of Knowledge/Study Questions/New Questions/202312010109.md","fromSide":"bottom","toNode":"23259e8878f49207","toSide":"right"},
+		{"id":"3c51283a8654d110","fromNode":"0b4c27ab921db0aa","fromSide":"bottom","toNode":"23259e8878f49207","toSide":"top"},
+		{"id":"3935a9f37005239b","fromNode":"23259e8878f49207","fromSide":"bottom","toNode":"e7f857dc23de1e35","toSide":"top"},
+		{"id":"a88c62b399314e50","fromNode":"e7f857dc23de1e35","fromSide":"right","toNode":"1fa5e0db9cd6fbab","toSide":"left"},
+		{"id":"b848ac21e08bb18b","fromNode":"7d852f6ab1e300c5","fromSide":"left","toNode":"1fa5e0db9cd6fbab","toSide":"top"},
+		{"id":"a32db96a6ebc6a7e","fromNode":"1fa5e0db9cd6fbab","fromSide":"bottom","toNode":"6420b1dd697ca8b1","toSide":"top"}
+	]
+}

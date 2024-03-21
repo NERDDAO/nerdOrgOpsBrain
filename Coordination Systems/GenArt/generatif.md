@@ -1,0 +1,13 @@
+Generative art, characterized by its reliance on autonomous systems such as algorithms, can indeed bring a new wave to Abstract Expressionism. Here are some reasons:
+
+1. **Evolution of Non-Objective Imagery**: Just like Abstract Expressionism, generative art is non-objective and non-representational. However, instead of the artist's subconscious and emotions driving the imagery, in generative art, it's algorithms or rules set by the artist. This opens up new possibilities for abstraction in art, with complex patterns and forms that would be almost impossible to create manually.
+
+2. **Emphasis on Process over Outcome**: Abstract Expressionism is known for its emphasis on the process of painting - the aggressive brush strokes and visible signs of the artist's work. In a similar sense, generative art is also very much about the process, except that the process is digital and automated. The way the artist writes or chooses an algorithm, selects initial conditions, and allows it to generate a piece is all part of the process.
+
+3. **Use of New Tools and Techniques**: Generative art makes use of modern technology as artistic tools. This reflects a similar vanguard tendency observed in the Abstract Expressionist movement when it broke away from traditional art techniques in its time. Just as action painting was a new technique in the mid-20th century, writing code or algorithms to create art is a new technique in our current digital era.
+
+4. **Infinite Variety**: With generative art, each piece is potentially unique, as altering the initial conditions or the algorithm even slightly can produce vastly different results. Similarly, Abstract Expressionism sought to break away from the repetition of traditional genres and styles, prioritizing novel and unique creations.
+
+5. **Revolutionizing Scale**: Just as Abstract Expressionism is known for its large-scale works, generative art can also be done on an enormous scale - but with the scaling not limited to physical size. Abstract forms can evolve and morph continuously, creating a sense of endlessness and infinity that can be experienced by scrolling or zooming.
+
+However, one might also argue that generative art represents a departure from Abstract Expressionism in fundamental ways. Abstract Expressionism was intrinsically human and emotional, with the artwork serving as an extension of the artist's consciousness. Generative art, on the other hand, is created by algorithms, which are emotionless and impersonal. But, it's also worth noting that these algorithms are engineered by humans, so one might view generative art as a different kind of extension of the artist's consciousness - one that reflects our 21st-century, digitally mediated reality.
