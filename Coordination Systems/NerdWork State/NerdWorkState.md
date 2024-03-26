@@ -9,13 +9,13 @@ kanban-plugin: basic
 - [ ] [[NerdWork State/Projects/GenArt/AI_U/README | AI_U]]
 - [ ] [[NerdWork State/Projects/DeSci/Strudel/README.md | Strudel]]
 - [ ] [[NerdWork State/Projects/DeSci/Bonsai/README.md | Bonsai]]
-- [ ] [[NerdWork State/Projects/HaikuCRM/README.md | Haiku]]
+- [ ] [[Enjoy @{2024-03-06}]]
 - [ ] [[NerdWork State/Projects/NERD/README.md | NERD]]
 
 
 ## Active Sprint
 
-- [ ] [[Enjoy @{2024-03-06}]]
+- [ ] [[NerdWork State/Projects/HaikuCRM/README.md | Haiku]]
 
 
 ## R&D

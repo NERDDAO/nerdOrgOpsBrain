@@ -1,0 +1,335 @@
+# Transactions[
+
+](/concepts/transactions#transactions)
+
+Farcaster Frames have the ability to instruct an App to invoke and perform Ethereum transactions (see the [spec](https://warpcast.notion.site/Frame-Transactions-Public-Draft-v2-9d9f9f4f527249519a41bd8d16165f73?pvs=4)).
+
+## 
+
+Overview[
+
+](/concepts/transactions#overview)
+
+At a glance:
+
+1. A Frame has a `<Button.Transaction>` element with a specified target `.transaction` route.
+2. When the user presses the button in the App, the App will make a `POST` request to the `.transaction` route.
+3. The App uses the response to forward the transaction data to the user's wallet for signing and broadcasting.
+4. Once the user has sent the transaction, the App will perform a `POST` request to the frame.
+
+## 
+
+Walkthrough[
+
+](/concepts/transactions#walkthrough)
+
+Here is a trivial example on how to expose a transaction interface in a frame. We will break it down below.
+
+src/index.tsxsrc/abi.ts
+
+src/index.tsx
+
+```
+import { Button, Frog, TextInput, parseEther } from 'frog'
+import { abi } from './abi'
+ 
+export const app = new Frog()
+ 
+app.frame('/', (c) => {
+  return c.res({
+    action: '/finish',
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Perform a transaction
+      </div>
+    ),
+    intents: [
+      <TextInput placeholder="Value (ETH)" />,
+      <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+    ]
+  })
+})
+ 
+app.frame('/finish', (c) => {
+  const { transactionId } = c
+  return c.res({
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Transaction ID: {transactionId}
+      </div>
+    )
+  })
+})
+ 
+app.transaction('/send-ether', (c) => {
+  const { inputText } = c
+  // Send transaction response.
+  return c.send({
+    chainId: 'eip155:10',
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
+    value: parseEther(inputText),
+  })
+})
+ 
+app.transaction('/mint', (c) => {
+  const { inputText } = c
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    chainId: 'eip155:10',
+    functionName: 'mint',
+    args: [69420n],
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
+    value: parseEther(inputText)
+  })
+})
+```
+
+### 
+
+1. Render Frame & Intents[
+
+](/concepts/transactions#1-render-frame--intents)
+
+In the example above, we are rendering three transaction intents:
+
+1. A **text input** to capture the amount of ether to send with the transaction.
+2. A **"Send Ether" button** that will call the `/send-ether` route, and expose a "send ethereum to an address" interface to the App.
+3. A **"Mint" button** that will call the `/mint` route, and expose a "mint NFT" interface to the App.
+
+src/index.tsx
+
+```
+app.frame('/', (c) => {
+  return c.res({
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Perform a transaction
+      </div>
+    ),
+    intents: [
+      <TextInput placeholder="Value (ETH)" />,
+      <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+    ]
+  })
+})
+ 
+// ...
+```
+
+### 
+
+2. Handle `/send-ether` Requests[
+
+](/concepts/transactions#2-handle-send-ether-requests)
+
+Without route handlers to handle these requests, these buttons will be meaningless.
+
+Firstly, let's define a `/send-ether` route to handle the "Send Ether" button:
+
+src/index.tsx
+
+```
+app.frame('/', (c) => {
+  return c.res({
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Perform a transaction
+      </div>
+    ),
+    intents: [
+      <TextInput placeholder="Value (ETH)" />,
+      <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+    ]
+  })
+})
+ 
+// ...
+ 
+app.transaction('/send-ether', (c) => {
+  const { inputText } = c
+  // Send transaction response.
+  return c.send({
+    chainId: 'eip155:10',
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
+    value: parseEther(inputText),
+  })
+})
+```
+
+A breakdown of the `/send-ether` route handler:
+
+- We are responding with a `c.send` ("send transaction") response.
+- We are extracting user input from the previous frame via `inputText`.
+- Within `c.send`, we can specify a:
+    - `chainId`: CAIP-2 compliant chain ID. We are sending to `eip155:10` where `1` is Ethereum mainnet.
+    - `to`: a recipient.
+    - `value`: the amount of wei to send. We are using `parseEther` to convert ether → wei.
+    - `data`: optional calldata to include in the transaction.
+    - `abi`: optional ABI to include in the transaction.
+- The `c.send` function constructs a [well-formed JSON response](https://warpcast.notion.site/Frame-Transactions-Public-Draft-v2-9d9f9f4f527249519a41bd8d16165f73?pvs=4) to be consumed by the App.
+
+**Tip**
+
+We can also utilize the context to extract things like [frame data](/reference/frog-transaction-context#framedata), [button index/value](/reference/frog-transaction-context#buttonvalue) or [input value](/reference/frog-transaction-context#inputvalue) that was interacted with, and [more](/reference/frog-transaction-context):
+
+```
+app.transaction('/send-ether', (c) => { 
+  const { buttonValue, inputText, frameData } = c
+  return c.send({ 
+    chainId: 'eip155:10', 
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B', 
+    value: parseEther(inputText), 
+  }) 
+}) 
+```
+
+### 
+
+3. Handle `/mint` Requests[
+
+](/concepts/transactions#3-handle-mint-requests)
+
+Secondly, let's define a `/mint` route to handle the "Mint" button:
+
+src/index.tsxsrc/abi.ts
+
+src/index.tsx
+
+```
+import { abi } from './abi'
+ 
+app.frame('/', (c) => {
+  return c.res({
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Perform a transaction
+      </div>
+    ),
+    intents: [
+      <TextInput placeholder="Value (ETH)" />,
+      <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+    ]
+  })
+})
+ 
+// ...
+ 
+app.transaction('/mint', (c) => {
+  const { inputText } = c
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    functionName: 'mint',
+    args: [69420n],
+    chainId: 'eip155:10',
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
+    value: parseEther(inputText)
+  })
+})
+```
+
+A breakdown of the `/mint` route handler:
+
+- We are responding with a `c.contract` ("contract transaction") response.
+- We are extracting user input from the previous frame via `inputText`.
+- Within `c.contract`, we can specify a:
+    - `abi`: ABI for the contract.
+    - `functionName`: Function to call on the contract.
+    - `args`: Arguments to supply to the function.
+    - `chainId`: CAIP-2 compliant chain ID.
+    - `to`: Contract address.
+    - `value`: Optional amount of wei to send to the payable function.
+- The `c.contract` function constructs a [well-formed JSON response](https://warpcast.notion.site/Frame-Transactions-Public-Draft-v2-9d9f9f4f527249519a41bd8d16165f73?pvs=4) to be consumed by the App.
+
+### 
+
+4. Handle Post-Transaction Execution[
+
+](/concepts/transactions#4-handle-post-transaction-execution)
+
+Once the user has sent the transaction, the App will perform a `POST` request to the frame.
+
+We can extract the transaction ID from context via `c.transactionId`.
+
+Note that if you don't specify an [`action` on the frame](/reference/frog-frame-response#action), the App will perform a request to the same frame.
+
+src/index.tsxsrc/abi.ts
+
+src/index.tsx
+
+```
+app.frame('/', (c) => {
+  return c.res({
+    action: '/finish',
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Perform a transaction
+      </div>
+    ),
+    intents: [
+      <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+    ]
+  })
+})
+ 
+app.frame('/finish', (c) => {
+  const { transactionId } = c
+  return c.res({
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Transaction ID: {transactionId}
+      </div>
+    )
+  })
+})
+ 
+app.transaction('/send-ether', (c) => {
+  // Send transaction response.
+  return c.send({
+    chainId: 'eip155:10',
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
+    value: parseEther('1'),
+  })
+})
+ 
+app.transaction('/mint', (c) => {
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    chainId: 'eip155:10',
+    functionName: 'mint',
+    args: [69420n],
+    to: '0xd2135CfB216b74109775236E36d4b433F1DF507B'
+  })
+})
+```
+
+### 
+
+5. Bonus: Learn the API[
+
+](/concepts/transactions#5-bonus-learn-the-api)
+
+You can learn more about the transaction APIs here:
+
+- [`Frog.transaction` Reference](/reference/frog-transaction)
+- [`Frog.transaction` Context Reference](/reference/frog-transaction-context)
+- [`Frog.transaction` Response Reference](/reference/frog-transaction-response)
+
+Last updated: 3/20/24, 6:53 PM
+
+[
+
+Middleware
+
+Previousshift←](/concepts/middleware)[
+
+Bun
+
+Nextshift→](/platforms/bun)

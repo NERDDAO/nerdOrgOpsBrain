@@ -1,0 +1,199 @@
+# Devtools[
+
+](/concepts/devtools#devtools)
+
+Supercharge frame development with Frog's built-in devtools
+
+When developing Frames, it's useful to get feedback in real-time. Shortening the dev loop helps you iterate on your Frames and launch them faster.
+
+Frog includes built-in devtools that include a live preview of your frame, time-travel debugging, request information, validation, and more to help with development.
+
+Your browser does not support the video tag.
+
+## 
+
+Getting Started[
+
+](/concepts/devtools#getting-started)
+
+Once you've [set up your Frog project](/getting-started), you can attach the devtools to your frames by adding the `devtools` function to your app. No need to install anything else or clone a separate repo!
+
+src/index.tsx
+
+```
+import { devtools } from 'frog/dev'
+import { serveStatic } from 'frog/serve-static'
+ 
+export const app = new Frog()
+ 
+app.frame('/', (c) => { ... })
+ 
+devtools(app, { serveStatic })
+```
+
+Next, you can start a dev server for your frames by running the following command:
+
+```
+frog dev
+```
+
+This will start a dev server at [`http://localhost:5173`](http://localhost:5173). Then you can head to the `/dev` route ([`http://localhost:5173/dev`](http://localhost:5173/dev)) to see a live preview (with live reloading) of your frames.
+
+To learn more about `frog dev` checkout the [`dev` command docs](/commands/dev).
+
+## 
+
+Features[
+
+](/concepts/devtools#features)
+
+The best way to learn about what features are included in the Frog Devtools is to try them out yourself! For those that haven't tried out Frog yet, here's a brief overview of what's included.
+
+### 
+
+Live Reload[
+
+](/concepts/devtools#live-reload)
+
+When you make changes to and save your Frame, the devtools will automatically reload your Frame, while maintaining the current state. This makes it easy to see how your changes affect the Frame and allow you to iterate quickly on nitpicky details, like getting your Frame image just right.
+
+### 
+
+Browser URL State[
+
+](/concepts/devtools#browser-url-state)
+
+The Frog Devtools keep track of all its state in the URL via a query hash. This means that you can share a link to the devtools with someone else and they'll see the same state as you. This is useful for sharing bugs, or for getting feedback from others.
+
+### 
+
+Frame Preview[
+
+](/concepts/devtools#frame-preview)
+
+The Frame Preview allows you to interact with your Frame, just like you would in production. Click buttons, add text, and see how your Frame responds to user input.
+
+### 
+
+Sign In With Farcaster[
+
+](/concepts/devtools#sign-in-with-farcaster)
+
+You can connect your Farcaster account to the devtools to test [verification](/concepts/securing-frames#frame-data-verification) with your Frame. Simply, scan the QR code or copy-paste the login code in your mobile browser to sign in. You can also impersonate other users by entering a custom FID.
+
+### 
+
+Request Timeline[
+
+](/concepts/devtools#request-timeline)
+
+See all the requests made by your Frame and switch between them to see differences in the Frame, validation, state, metrics, and more. This is useful for restoring previous states, debugging errors, and profiling performance between different Frames.
+
+### 
+
+Navigator[
+
+](/concepts/devtools#navigator)
+
+Every Frame is an app. The navigator allows you to switch between different Frames that exist in your Frog app. It also allows you to navigator forward and backward (like you can do in your browser for web apps), as well as refresh the current Frame.
+
+`shift + click` on a the refresh button will "hard refresh" your Frame back to it's initial state.
+
+### 
+
+Validation[
+
+](/concepts/devtools#validation)
+
+Getting your Frame right is important. Frog manages most of the internals for you, but there are still some areas where you can make mistakes. The devtools will show you any validation errors for your Frame as well as some info on how to fix them.
+
+### 
+
+Dev Panel[
+
+](/concepts/devtools#dev-panel)
+
+Lastly, the dev panel is where you can see information for the current Frame, like specifics about the Frame's request, [context value](/reference/frog-frame-context), current and previous [state](/concepts/state-management), and underlying meta tags powering your Frame.
+
+### 
+
+Metrics[
+
+](/concepts/devtools#metrics)
+
+For each Frame request, Frog breaks down metrics related to your Frame, including request speed, Frame document size, and Frame image size. These are important metrics to pay attention to when developing Frames as they affect how users experience your Frames.
+
+## 
+
+Standalone Mode[
+
+](/concepts/devtools#standalone-mode)
+
+The Frog Devtools work best when used with Frog Frames, but you can also use the devtools with non-Frog Frames. There are two methods: [global install](/concepts/devtools#global-install) and [executable](/concepts/devtools#executable).
+
+The global installation method is recommended as it works offline without an Internet connection.
+
+### 
+
+Global Install[
+
+](/concepts/devtools#global-install)
+
+First, install `frog` globally with your package manager:
+
+npmpnpmyarnbun
+
+npm
+
+```
+npm i -g frog
+```
+
+Then, run the `frog` command to start the dev server:
+
+```
+❯ frog
+ 
+[running] frog@v0.7.5
+ 
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+```
+
+A local dev server will start, where you can test your frames. For more information on command options, check out the [`frog` command docs](/commands/dev).
+
+### 
+
+Executable[
+
+](/concepts/devtools#executable)
+
+You can execute directly via `npx`, `pnpx`, or `bunx`:
+
+npxpnpxbunx
+
+npx
+
+```
+npx frog
+```
+
+## 
+
+Feedback[
+
+](/concepts/devtools#feedback)
+
+Your experience using Frog's Devtools is important! Please let us know if you have any feedback or issues when using the devtools by creating a [new discussion thread](https://github.com/wevm/frog/discussions) on Frog's GitHub repository.
+
+Last updated: 3/20/24, 6:53 PM
+
+[
+
+Deployment
+
+Previousshift←](/concepts/deployment)[
+
+Middleware
+
+Nextshift→](/concepts/middleware)

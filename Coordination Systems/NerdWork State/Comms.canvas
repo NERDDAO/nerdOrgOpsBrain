@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"d108cde0e7359f0f","x":-505,"y":-1463,"width":914,"height":580,"type":"group","label":"Reports"},
+		{"id":"de5184c0346303d4","x":261,"y":-155,"width":250,"height":60,"type":"text","text":"E-Mail"},
+		{"id":"c303b96caf31f34b","x":-609,"y":-189,"width":250,"height":60,"type":"text","text":"Meeting Notes"},
+		{"id":"bde1eb996c523a21","x":-319,"y":-306,"width":250,"height":60,"type":"text","text":"Events"},
+		{"id":"42333cc97be15577","x":-21,"y":-347,"width":250,"height":60,"type":"text","text":"Telegram Comms\n"},
+		{"id":"078783a1f64de4e2","x":-170,"y":265,"width":250,"height":117,"type":"text","text":"How to organize operational comms?"},
+		{"id":"bc69e69fba4d12eb","x":-113,"y":-639,"width":202,"height":169,"type":"text","text":"Create Organizational Comms Report"},
+		{"id":"b71f060215d194ed","x":-459,"y":-1016,"width":250,"height":60,"type":"text","text":"R"}
+	],
+	"edges":[
+		{"id":"3e1fa20d091712ae","fromNode":"078783a1f64de4e2","fromSide":"top","toNode":"42333cc97be15577","toSide":"bottom"},
+		{"id":"1682307f4c239c0d","fromNode":"078783a1f64de4e2","fromSide":"right","toNode":"de5184c0346303d4","toSide":"left"},
+		{"id":"470bab2b4935e6ea","fromNode":"078783a1f64de4e2","fromSide":"left","toNode":"c303b96caf31f34b","toSide":"right"},
+		{"id":"4c80f8d97285dba5","fromNode":"078783a1f64de4e2","fromSide":"top","toNode":"bde1eb996c523a21","toSide":"bottom"},
+		{"id":"343bbccafedc71e1","fromNode":"c303b96caf31f34b","fromSide":"top","toNode":"bc69e69fba4d12eb","toSide":"left"},
+		{"id":"2ba23c7000339487","fromNode":"bde1eb996c523a21","fromSide":"top","toNode":"bc69e69fba4d12eb","toSide":"bottom"},
+		{"id":"e7f0ef8c3a653f62","fromNode":"42333cc97be15577","fromSide":"top","toNode":"bc69e69fba4d12eb","toSide":"right"},
+		{"id":"e39f3349d86dcc5e","fromNode":"de5184c0346303d4","fromSide":"top","toNode":"bc69e69fba4d12eb","toSide":"right"},
+		{"id":"e79e92921d6a3f0c","fromNode":"bc69e69fba4d12eb","fromSide":"top","toNode":"b71f060215d194ed","toSide":"bottom"}
+	]
+}

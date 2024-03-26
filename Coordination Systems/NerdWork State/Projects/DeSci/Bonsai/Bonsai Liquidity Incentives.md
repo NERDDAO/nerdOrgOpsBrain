@@ -1,4 +1,4 @@
-Based on the information provided in the [[README]], the Bonsai report can focus on several domains of analysis to explore how liquidity can be secured with cryptographic incentives, and how to enhance the velocity of money within the network. Here are some suggested domains of analysis:
+Based on the information provided in the [[Coordination Systems/NerdWork State/Projects/DeSci/Bonsai/README]], the Bonsai report can focus on several domains of analysis to explore how liquidity can be secured with cryptographic incentives, and how to enhance the velocity of money within the network. Here are some suggested domains of analysis:
 
 ### 1. **Cryptographic Incentives for Liquidity Provision**
    - **Staking Mechanisms:** Analyze the role of staking mechanisms in securing liquidity. Staking can incentivize users to lock up their assets in return for rewards, thus providing liquidity to the network.
