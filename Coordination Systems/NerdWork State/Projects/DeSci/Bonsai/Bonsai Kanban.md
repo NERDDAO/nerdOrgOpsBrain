@@ -17,9 +17,9 @@ kanban-plugin: basic
 
 ## At0x
 
-- [ ] Start Repo
 - [ ] Bonus: Frames
-- [ ] Farm Metadata Gating
+- [ ] [[Farcaster ideas]]
+- [ ] [[at0xWorkLog]]
 
 
 ## Raquel
@@ -34,7 +34,11 @@ kanban-plugin: basic
 **Complete**
 
 
+***
 
+## Archive
+
+- [x] Start Repo
 
 %% kanban:settings
 ```
