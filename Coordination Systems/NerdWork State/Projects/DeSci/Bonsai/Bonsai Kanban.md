@@ -10,7 +10,7 @@ kanban-plugin: basic
 
 ## Mattim0use
 
-- [ ] Farm Deployment
+- [ ] [[Farm Deployment]]
 - [ ] nJoy Nft Contract Testing/Deployment
 - [ ] Image Storage
 
