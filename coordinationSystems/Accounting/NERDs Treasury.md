@@ -1,0 +1,26 @@
+base:0xCDFdd983287cF080dA043f0E553DBB87f58eE8e5
+	Network: Base
+	Type: Multisig 2/2
+	Signers: 
+		base:0x69eF61AFc3AA356e1ac97347119d75cBdAbEF534
+		base:0xC20ba75F6F82b6Dd8e63f307C307fB8A6c69AF28
+
+arb1:0x7AEE7e0e5240E835090E23D2Beb556cB54fa6D0D
+	Network: Arbitrum One
+	Type: Multisig 2/2
+	Signers: 
+		arb1:0x69eF61AFc3AA356e1ac97347119d75cBdAbEF534
+		arb1:0xC20ba75F6F82b6Dd8e63f307C307fB8A6c69AF28
+
+oeth:0x11de816f60cB82Af2c1BEa5AA7507c8cEcE0B3F1
+	Network: Optimism
+	Type: Multisig 2/2
+	Signers: 
+		oeth:0x69eF61AFc3AA356e1ac97347119d75cBdAbEF534
+		oeth:0xC20ba75F6F82b6Dd8e63f307C307fB8A6c69AF28
+
+Radom: 
+	Organization: 7ca07d06-bba2-41ed-9823-93391fb0eXXX
+	Members:
+		0xc20ba75f6f82b6dd8e63f307c307fb8a6c69af28
+		0x69ef61afc3aa356e1ac97347119d75cbdabef534
