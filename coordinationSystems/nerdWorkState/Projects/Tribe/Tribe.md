@@ -36,7 +36,26 @@ These haikus serve not only as a unique storytelling medium but also as a method
    - **Actions**: Four potential actions the player can take, expressed as single verbs (e.g., "run", "fight", "heal", "search").
 
 ---
+```typescript
+type Haikipu = {
+Location: {x:number, y:number, name:string};
+Inventory: string[];
+Health:number;
+Status:string;
+Haiku: string;
+Actions:string[];
+}
 
+type Player = {
+playerId: string;
+playerName:string;
+isAlive:bool;
+Logs: Haikipu[];
+}
+
+```
+
+---
 ### Example Ontology Implementation:
 
 - **Player Attributes:**

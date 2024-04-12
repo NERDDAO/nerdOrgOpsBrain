@@ -1,3 +1,432 @@
+**Forwarded from [Vesper](https://t.me/hidden_account_1712933625)**
+
+2) if you or someone you know can work on and generate a high quality lore/backstory etc for MYSTCL, it's something that is a priority as well and underpins a lot of future developments.  I'd be interested in discussing that too
+
+***
+
+**Forwarded from [Vesper](https://t.me/hidden_account_1712933572)**
+
+..
+
+In the interest of pragmatism, I'll put my two main feelings about things out there and let you let me know what you think:
+
+1) if you you have ideas for an innovative frame we can build that does cool stuff and aligns with MYSTCL/whirl, we could potentially fund the building of that and I'd actually be very interested in doing so
+
+***
+
+**Forwarded from [Seth (aka Sparked)](https://t.me/Sparked0x)**
+
+yo nerds is anyone interested in getting online catan sessions going?
+
+Got another person so 2 more would be perfect
+
+Lookin at u @mattim0use @Plat0x_eth
+
+***
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+https://warpcast.com/~/channel/nerdery
+
+***
+
+**Forwarded from [RodoTritön 🌊♦✨](https://t.me/Rodotriton1)**
+
+We must focus on arbitrum: https://gov.gitcoin.co/t/thriving-gg20-thank-arb-and-gitcoin/18565?u=robioreefeco
+
+***
+
+**Forwarded from [RodoTritön 🌊♦✨](https://t.me/Rodotriton1)**
+
+Sketch for grant template for obsidian: 
+
+1. Problem Description
+2. Solution Proposal 
+3. Aims and Objectives 
+4. Execution Strategy 
+5. Timeline and Milestones 
+6. Team Members 
+7. Collaborations Project 
+8. Impact Assessment 
+9. Future Financial Support 
+10. Financial Plan Possible 
+11. Risks and Challenges 
+12. Organizational Background 
+13. Closing Statement
+
+***
+
+**Forwarded from [RodoTritön 🌊♦✨](https://t.me/Rodotriton1)**
+
+Program Rounds Open Source Software= $1M USDC
+
+web3 infra: $300K USDC (Arbitrum)
+dApps & Apps: $300K USDC (Arbitrum)
+Hackathon Alumni: $100K USDC (Arbitrum)
+Developer Tooling: $300K USDC in Arbitrum
+
+Soon:
+ENS: $100K (Arbitrum)
+Hypercerts: $35K (Arbitrum)
+Open Civics: $45K (Arbitrum)
+Token Engineering Commons (TEC): $50K (Optimism)
+
+***
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+Rodrigo is the head of grants
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+found it (https://github.com/gitcoinco/grants-stack/blob/main/packages/common/src/allo/backends/allo-v2.ts#L98)
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+in case you can check ("echarle un ojo")
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+if it's allocate, I'm not sure what "_data (bytes[])" input is
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+https://polygonscan.com/address/0xe04d9e9ccdf65eb1db51e56c04bee4c8582edb73#writeProxyContract
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+mainly because when I check one example of one gitcoin round from allo v2, there is only allocate and I have to write as a proxy
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+I have a question, I'm not sure if to fund a pool a have to call allocate or fundPool
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+https://github.com/allo-protocol/allo-v2/blob/5e07f752bbd244e9551df037f91ec9352b5ad572/contracts/core/Allo.sol#L368
+
+***
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+https://github.com/tohsaka888/react-knowledge-graph/tree/main
+
+***
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+```
+Based on the latest context and the haikus provided, here are the key updates and actionable items decoded into natural language to foster coordination:
+
+1. **Research and Development (R&D) Challenges**:
+   - There have been issues with data not being properly uploaded or processed. This is a moment of suspense and uncertainty as solutions are sought. It's crucial to focus on troubleshooting and problem-solving inherent in R&D work.
+
+2. **Digital Realm and Data Analysis**:
+   - The silent yet impactful role of coding and data analysis in the digital realm is highlighted. There's an emphasis on the silent processes that lead to new knowledge and insights.
+
+3. **Contextual Understanding and Pretext**:
+   - The importance of embracing context in its entirety to uncover deeper truths and meanings is emphasized. This suggests a need for a deeper dive into the essence of situations or narratives beyond superficial pretexts.
+
+4. **Undefined Potential**:
+   - The concept of 'undefined' as a state brimming with potential is reiterated. This suggests an openness to exploring numerous paths and opportunities that emerge from an undefined state, emphasizing creative freedom and anticipation.
+
+5. **Development Work (DevWork)**:
+   - The innovative process of integrating data through coding to uncover new insights and solutions is highlighted. This reflects the ongoing journey of discovery and the creation of a coherent knowledge base through haiku-based coordination.
+
+6. **Haiku as a Medium for Encoding and Decoding**:
+   - The use of haiku as a medium for encoding and decoding the semantic load of daily activities and updates within a collaborative environment is proposed. This aims to foster coherence and connection among team members.
+
+7. **Strategic Use of Language in Arguments**:
+   - The strategic and careful use of language in arguments or debates is discussed, likening words to a sharp blade that must be wielded with precision. This emphasizes the importance of truth as a protective armor in discussions.
+
+8. **Nature and Tranquility Amidst Chaos**:
+   - The raw, unbridled force of nature and finding tranquility within turmoil is captured. This suggests a deeper resilience and calm that can exist amidst life's tumultuous moments.
+
+9. **Renewal and Goodness**:
+   - The theme of renewal and the continuous cycle of good emerging afresh is highlighted. This suggests a focus on the potential and promise for goodness with each new day or opportunity.
+
+10. **Beginning Anew with Dawn**:
+    - The essence of beginning anew with the dawn, symbolizing the initiation of daily tasks and the continuous cycle of communication and updates, is emphasized. This reflects the concept of using haiku as a medium for fostering coherence and connection.
+
+These updates encapsulate the essence of the haikus provided, focusing on innovation, problem-solving, the importance of context, the potential of undefined states, and the strategic use of language. The recurring theme of using haiku for coordination and communication suggests a novel approach to project management and team collaboration.
+```
+
+***
+
+**Forwarded from [ivcained](https://t.me/ivcained)**
+
+Hey I had a question...
+
+For votecaster, 
+I'm trying to do something.
+
+In frame voting for submissions made for a hackathon.
+
+The hackathon platform I'm working on integration is https://github.com/ivcained/mud-hackathon/blob/main/packages/client/package.json
+
+Any insights / pointers are highly appreciated
+
+***
+
+**Forwarded from [Vesper](https://t.me/hidden_account_1712898555)**
+
+I'm friends with https://warpcast.com/apex777 who is building frames regularly right now.  I'll get some more background info from him about reasonable timeframes, and what's involved in the process
+
+**Forwarded from [Moid <OOO until Friday>](https://t.me/hidden_account_1712897513)**
+
+Hey I was out of office let’s chat next week
+
+***
+
+**Forwarded from [Vesper](https://t.me/hidden_account_1712893147)**
+
+Maybe you can let me know if this is a possibility, I'm a dev as well btw.  Could we have a frame where people can buy a token from a Uniswap pool?  Is swapping possible with frames or only more simple methods can be accessed?
+
+**Forwarded from [cdds](https://t.me/carlosdimatteo)**
+
+Updates:
+
+Locastic:
+
+no updates , team on vaca
+carolina gathering docs 
+Carolina needs partners and desci apps list from @joshua1 
+josh recommends a separate bar for communities 
+
+Solidant : 
+
+mickey doing progress on the scoping doc 
+reviewing the options for governance, proposed makerdao as a more robust option 
+
+we created a very high level description of actions that we want the daos and subdaos to perform to give mickey a sense of product requirements so he can research which are our best options to cover these 
+
+nerdDAO:
+
+Meeting with lemonade on monday 
+
+haiku system progress to aggregate embeddings functionality
+
+the wiki of what they have built  is being built on obsidian 
+
+building interfaces on warpcaster with custom frames 
+
+integrated the PoK route into cast actions 
+
+lens is going to implement an integration with cast so what theyve built will be integratable in both lens and lemonade 
+
+ engram index PoC called "tribes" in farcaster
+
+Josh wants to have more visibility into the concepts and things nerdDAO is working on , raquel mentioned they are working on a wiki 
+
+Raquel to coordinate better visibility of nerdDAO concepts and work for desciworld (josh) to peek into 
+
+ 
+
+Internal: 
+
+Eneko:
+
+Chatbot only working on local, eneko waiting on mystmd to deploy to vercel 
+
+started research on hallucination testing on 2 different models 
+
+Action Items:
+
+Agree on what partners and desci apps will be shown on the site @joshua1 @carolina 
+
+Carolina mentioned mosaic to be addressed in the core sync 
+
+We need to reorganize calls cause noone wants to have 3 hours of meetings 
+
+we also need to be more organized on meeting agendas so they dont go over and they are efficient 
+
+@carlosdima97 will tryto lead the organization efforts 
+
+Blockers: 
+
+Requirements:
+
+Notes:  
+
+Lots of craziness in meetings, we need to avoid this since it translates into inefficiency , we couldnt do an internal rundown today in the dev sesh because of this.
+
+**Forwarded from [Anže M. | Mickey](https://t.me/mickey_am)**
+
+https://github.com/makerdao/endgame-toolkit
+
+This specifically for subDAOs, license allows for reuse.
+
+***
+
+**Forwarded from [Anže M. | Mickey](https://t.me/mickey_am)**
+
+I'd suggest we have a look if MakerDAO has opensourced any of the endgame smart contracts and see if we can use those.
+
+***
+
+**Forwarded from [Anže M. | Mickey](https://t.me/mickey_am)**
+
+I think it'd add a lot of value if we're able to find something that would support MPC for signing/proposal execution.
+
+***
+
+**Forwarded from [Anže M. | Mickey](https://t.me/mickey_am)**
+
+@JBate7 @Plat0x_eth I've had a closer look at EtheransOS. From what I've gathered, the whole project is in alpha atm, and the development seems stale. Do you know of any other projects that are launching with their tooling?
+
+***
+
+**Forwarded from [Anže M. | Mickey](https://t.me/mickey_am)**
+
+I've started on the scoping doc. I suggest we go through the functional requirements tomorrow. Does 17.00 CET work for everybody?
+
+https://docs.google.com/document/d/1AKLvjMu1qHNScCvmaIq1kzwp2O18bRCLung9IZLtwjk/edit?usp=sharing
+
+***
+
+**Forwarded from [Josh](https://t.me/JBate7)**
+
+Carolina has decided that she's going to start asking questions into this channel, so that at0x can receive them in the brain and query from Obsidian
+
+**Forwarded from [Luis Maumejean](https://t.me/Phygital_Integrator)**
+
+Proposal for Collaboration between DeSci World and CICM to create the DAO (RC-CICM) - Research Collective CICM
+
+Dear President Mauricio Jessurun Solomou and council,
+
+In this era of technological innovation and scientific advancement, the Colegio de Ingenieros Civiles de México (CICM) has consistently stood out for its commitment to excellence, research, and the professional development of its members. It is in this spirit of innovation and constant pursuit of improvement that I reach out to you to present a unique opportunity that we believe could mark the beginning of a new era for CICM and its participants: the adoption and participation in DeSci World as a Research Collective (RC).
+
+Aligning with the 10 Strategic Objectives 2024-2026 of CICM, the proposed participation perfectly aligns with the WORK PROGRAM of the XL Directing Council.
+
+The Research Collective CICM (RC-CICM) serves society by generating kEngrams (Knowledge) that generates more knowledge, which is the basis of human progress. All without borders, and in freedom and transparency.
+
+To the membership, granting benefits that over time will gain value for their usability, their experiences, their benefits, and the value that the tokens they own.
+
+Internally within CICM, positioning the College as an institution at the forefront, disruptive, visionary, and value-generating. Generating a potential income stream at no cost that both the college and the current founding council of the (RC-CICM) will receive their NFTs as founders of the DAO (RC-CICM).
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+𝕋ℍ𝔼 ℕ𝔼ℝ𝔻𝕊 𝕊ℍ𝔸𝕃𝕃 𝕀ℕℍ𝔼ℝ𝕀𝕋 𝕋ℍ𝔼 𝔼𝔸ℝ𝕋ℍ
+
+only spam allowed is nerd and nerd variations
+
+this is a nerdocracy
+ruled by aristonerds
+
+i'll figure out more as we go along
+
+ps if you attack north you're dead to me
+
+***
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+obsidian does return references, force it by saying "based on my notes" and click on the eye button
+
+***
+
+**Forwarded from [Josh](https://t.me/JBate7)**
+
+@Oakenshadow @eurunuela @Gingerheart86 @carlosdimatteo @rraigal @Phygital_Integrator @Puguis 
+
+🫡️️ **TASK** 
+
+We're in the trial phase of using Obsidian Brains for coordination. Carlos @Plat0x_eth has kindly set up the bot in BRAINZZ that will consume information we forward there and attach it to a vault. Currently, its mostly his own data and we need to give it more diverse test data from each user (us).
+
+So, we must:
+
+1. Start forwarding messages of any relevance to DSW and our product, operations, BD etc. to the BRAINZZZ channel. 
+2. Dont worry for the next few days about structure, just send information there
+3. We will optimise structure in the coming week
+
+Thank you!
+
+***
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+This is why the zettlekasten method can improve the performance vs just using entire documents
+
+***
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+https://x.com/lefthanddraft/status/1777495120910426436?s=46
+
+***
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+I believe the AI can give better results if it weighs synthesized knowledge more than entire papers
+
+***
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+I was wondering if you have already done something like this and have templates for it
+
+***
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+My idea is to create a template for fleeting notes, literature notes, and permanent notes, so I can synthesize the list of papers I want to read re: reducing hallucinations
+
+***
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+Hey NERDs, have you played with the zettlekasten method in the brain?
+
+***
+
+**Forwarded from [Josh](https://t.me/JBate7)**
+
+@Plat0x_eth @carlosdimatteo @Oakenshadow @rraigal we need to have a serious discussion about the requirements of RC infra. In particular regarding EthOS, we need to be in complete alignment on all of this for Solidant
+
+***
+
+**Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
+
+We can have it a number of ways:
+
+-> Front end the same staking contract from multiple sites
+-> You can host the build farms on your site, we can work on ui improvements and whatnot 
+->We can create a new contract for you guys to own with your custom settings
+
+***
+
+**Forwarded from [RodoTritön 🌊♦✨](https://t.me/Rodotriton1)**
+
+Sketch for grant template for obsidian: 
+
+1. Problem Description
+2. Solution Proposal 
+3. Aims and Objectives 
+4. Execution Strategy 
+5. Timeline and Milestones 
+6. Team Members 
+7. Collaborations Project 
+8. Impact Assessment 
+9. Future Financial Support 
+10. Financial Plan Possible 
+11. Risks and Challenges 
+12. Organizational Background 
+13. Closing Statement
+
 **Forwarded from [Diadon](https://t.me/DiadonAcs)**
 
 Build it and they will come perhaps 😅
@@ -664,3 +1093,61 @@ Great chatting! Looking forward to LENR Research Collective
 **Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
 
 ok now try to forward something
+
+**Forwarded from [ivcained](https://t.me/ivcained)**
+
+Jesse Squats won the Intuition
+Integration Challenge at ETH Denver!
+
+Thank you for all the support and for hosting the lit hack house. 
+
+@Plat0x_eth @Oakenshadow @JBate7 
+🏯🫶🏽💙
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+# Raquel's daily report
+
+## Meetings
+
+### Meeting 1. Class of Dark Arts (DSW)
+
+At0x has performed a workshop about obsidian for internal organization. The DSW team has discussed the benefits and handicaps about using obsidian for organization. It has been agreed to create a daily report telegram channel to be pushed. 
+
+### Meeting 2. Informal meeting with At0x in gather
+
+Informal conversation about the projects state and objectives, talk again about obsidian, commented that we should improve our NERDs obsidian. Commented that we have to have a meeting between At0x, Raquel and Matti for the finished projects. 
+
+## Operations
+
+### Grants
+
+Created a template for grants applications and started the GG20 grant application. 
+
+### Internal
+
+Created the folder for Grants Applications and Social Media on obsidian. 
+
+## Development
+
+### Donations Frame project
+
+Almost finished the frame, I have a doubt about the byte data formation, waiting for the donation frame teams answer.
+
+***
+
+**Forwarded from [Raquel Raigal](https://t.me/rraigal)**
+
+-1001344029809
+
+**Forwarded from [Eneko Uruñuela](https://t.me/eurunuela)**
+
+Ideas to test for improvements in hallucinations
+
+Without references:
+
+- Have a list of question-answer pairs from our own brain (I don't think it makes sense to test in data that has probably been used by OpenAI, etc). Run the same embedding-model setup with Python and loop through all the Q-A to get an accuracy score.
+
+Using paths or references to the origin of the context/data when giving responses:
+
+- If the AI provides a link, path or reference to where it got the answer from (or what it built it from), we could check if the answer is correct and if the reference is correct. This would give us two different scores and I think references are going to be very important for PoK. The current implementation in Obsidian does not return references.
