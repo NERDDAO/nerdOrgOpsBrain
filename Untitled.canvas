@@ -1,0 +1,42 @@
+{
+	"nodes":[
+		{"chat_role":"assistant","id":"5f644b472736d4b5","type":"text","text":"Haiku 1: In the realm of technology and scientific progress, CICM - The Mexican College of Civil Engineers has always been a trailblazer. Now, an intriguing opportunity presents itself: a collaboration with DeSci World as a Research Collective (RC-CICM). This partnership will align with CICM's 10 Strategic Objectives (2024-2026) and the XL Directing Council's work program. By joining DeSci World, CICM will generate knowledge that can create more knowledge - a key driver of human progress. Members will reap benefits in terms of experiences, usage, value, and the worth of their tokens. Internally, CICM emerges as an innovative and visionary institution with potential income from the new endeavor, and the current council members become NFT founders of RC-CICM within the DAO (Decentralized Autonomous Organization).\n\nHaiku 2: In a world of endless possibilities, nuclear reactions bring change. Amidst dreams of room temperature fusion, LENR (Low Energy Nuclear Reactions) ushers in a new dawn with the potential to generate vast amounts of energy in a clean and sustainable way, contributing significantly to human progress.","x":1360,"y":-162,"width":837,"height":452,"color":"6"},
+		{"id":"f9d9d7a4ee79e2e4","type":"file","file":"Data Cache/[Eneko Uruñuela](https_/t.me/eurunuela)/20240410.md","x":-326,"y":-723,"width":400,"height":400},
+		{"id":"d4650dfdeabafc34","type":"text","text":"create a haiku summarty","x":241,"y":850,"width":250,"height":60},
+		{"id":"a4fc19432d0fb2f0","type":"text","text":"create a haiku summarty","x":-1103,"y":807,"width":423,"height":60},
+		{"id":"19f655279b5beb94","type":"text","text":"create a haiku summarty","x":-1353,"y":150,"width":423,"height":60},
+		{"id":"e0ccbcbd93a200a4","type":"file","file":"Data Cache/[Plat0x.eth _ Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https_/t.me/Plat0x_eth)/20240410.md","x":-823,"y":-331,"width":400,"height":400},
+		{"id":"2807ab69fccc35ce","type":"text","text":"create a haiku summarty","x":-642,"y":-1139,"width":423,"height":107},
+		{"id":"7c48075998f9d05a","type":"text","text":"create a haiku summarty","x":764,"y":-772,"width":423,"height":60},
+		{"id":"bfb313b0ba88fad7","type":"file","file":"Data Cache/[Luis Maumejean](https_/t.me/Phygital_Integrator)/20240410.md","x":-446,"y":800,"width":400,"height":400},
+		{"chat_role":"assistant","id":"d587d68da5beec74","type":"text","text":" Mind's whispers test,\nThrough Q-A pairs we delve,\nTruth in each reference.","x":652,"y":-1427,"width":423,"height":185,"color":"6"},
+		{"chat_role":"assistant","id":"388464939b4716f5","type":"text","text":" Innovation calls,\nCICM joins DeSci World,\nKnowledge flows freely.","x":202,"y":1241,"width":360,"height":147,"color":"6"},
+		{"id":"7f8866d8f618cae5","type":"text","text":"Execute your purpose decode the haiku context into reeadable text","x":1360,"y":-361,"width":176,"height":139},
+		{"chat_role":"assistant","id":"4aa2ee7b1c7c5a55","type":"text","text":" Nerd domain arises,\nAristocrats guide the way,\nKnowledge flows endlessly.","x":337,"y":-573,"width":423,"height":238,"color":"6"},
+		{"id":"cd50fd05c570d51c","type":"file","file":"Data Cache/[Raquel Raigal](https_/t.me/rraigal)/20240410.md","x":-219,"y":313,"width":584,"height":400},
+		{"chat_role":"assistant","id":"7a4325cd3284f24c","type":"text","text":" Spring rain falls soft,\nLife blooms in vibrant hues,\nHope in every droplet.","x":1287,"y":-1014,"width":423,"height":253,"color":"6"},
+		{"id":"c876139bcf06eb68","type":"file","file":"Data Cache/[Josh](https_/t.me/JBate7)/20240410.md","x":189,"y":-1188,"width":400,"height":441},
+		{"id":"b5c40116c838f109","type":"text","text":"SUmmarize what happened today","x":159,"y":-83,"width":176,"height":139},
+		{"chat_role":"assistant","id":"de1b660e2f5f3798","type":"text","text":" Nuclear reactions,\nRoom temp fusion dream,\nLENR's new dawn rises.","x":679,"y":-1267,"width":423,"height":198,"color":"6"}
+	],
+	"edges":[
+		{"id":"2e1d6eabee847a2a","fromNode":"cd50fd05c570d51c","fromSide":"top","toNode":"b5c40116c838f109","toSide":"left"},
+		{"id":"64c8439d7ac2f384","fromNode":"e0ccbcbd93a200a4","fromSide":"right","toNode":"b5c40116c838f109","toSide":"left"},
+		{"id":"55990916f3985317","fromNode":"f9d9d7a4ee79e2e4","fromSide":"bottom","toNode":"b5c40116c838f109","toSide":"top"},
+		{"id":"59047222ce8a73ca","fromNode":"c876139bcf06eb68","fromSide":"left","toNode":"b5c40116c838f109","toSide":"right"},
+		{"id":"91b96829fd4c7f96","fromNode":"bfb313b0ba88fad7","fromSide":"right","toNode":"d4650dfdeabafc34","toSide":"left"},
+		{"id":"cdfa1fca2c6faf57","fromNode":"d4650dfdeabafc34","fromSide":"bottom","toNode":"388464939b4716f5","toSide":"top"},
+		{"id":"ee15177d12259caa","fromNode":"cd50fd05c570d51c","fromSide":"bottom","toNode":"a4fc19432d0fb2f0","toSide":"top"},
+		{"id":"d5f66b1c2eec004b","fromNode":"e0ccbcbd93a200a4","fromSide":"left","toNode":"19f655279b5beb94","toSide":"top"},
+		{"id":"86652e7f8ee039cd","fromNode":"19f655279b5beb94","fromSide":"bottom","toNode":"4aa2ee7b1c7c5a55","toSide":"top"},
+		{"id":"2c387bd057fc0f35","fromNode":"f9d9d7a4ee79e2e4","fromSide":"top","toNode":"2807ab69fccc35ce","toSide":"bottom"},
+		{"id":"c96bad081299edf1","fromNode":"2807ab69fccc35ce","fromSide":"bottom","toNode":"d587d68da5beec74","toSide":"top"},
+		{"id":"0acc64e60d0b1726","fromNode":"c876139bcf06eb68","fromSide":"top","toNode":"7c48075998f9d05a","toSide":"bottom"},
+		{"id":"ab7e0f973767b5ba","fromNode":"7c48075998f9d05a","fromSide":"bottom","toNode":"de1b660e2f5f3798","toSide":"top"},
+		{"id":"71a0e6d2d3ca1f58","fromNode":"4aa2ee7b1c7c5a55","fromSide":"right","toNode":"7f8866d8f618cae5","toSide":"bottom"},
+		{"id":"474ec61d442573e0","fromNode":"7a4325cd3284f24c","fromSide":"right","toNode":"7f8866d8f618cae5","toSide":"top"},
+		{"id":"a84cd45f1f557103","fromNode":"de1b660e2f5f3798","fromSide":"right","toNode":"7a4325cd3284f24c","toSide":"left"},
+		{"id":"a21a8b7e3ca4798f","fromNode":"d4650dfdeabafc34","fromSide":"top","toNode":"7f8866d8f618cae5","toSide":"bottom"},
+		{"id":"24f4937f5f2a9377","fromNode":"7f8866d8f618cae5","fromSide":"bottom","toNode":"5f644b472736d4b5","toSide":"top"}
+	]
+}
