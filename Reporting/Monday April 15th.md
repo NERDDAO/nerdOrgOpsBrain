@@ -98,7 +98,7 @@ The potential collaboration between the Civil and Infrastructure Construction Ma
 
 The collaboration between CICM and DeSci World offers a unique opportunity to leverage decentralized science for enhancing innovation, research, and professional development within civil engineering and construction management. By addressing potential challenges proactively and establishing robust operational frameworks, this collaboration is poised to make significant contributions to both CICM’s objectives and the broader scientific and engineering communities.
 
-Based on the comprehensive information provided in the notes from [[20240415]], the following action items are designed to further the collaboration between CICM and DeSci World, addressing strategic alignment, operational models, risk mitigation, and ensuring the successful integration and utilization of kEngrams within the CICM framework. These action items are structured to address the key areas highlighted in the notes, ensuring a thorough approach to the collaboration.
+Based on the comprehensive information provided in the notes from [[weeok001]], the following action items are designed to further the collaboration between CICM and DeSci World, addressing strategic alignment, operational models, risk mitigation, and ensuring the successful integration and utilization of kEngrams within the CICM framework. These action items are structured to address the key areas highlighted in the notes, ensuring a thorough approach to the collaboration.
 
 ### Strategic Alignment and Objectives
 
