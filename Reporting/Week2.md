@@ -17,29 +17,34 @@ need to make a markatang plan for the nerds
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
 
+#funkmasterFlex
+
 https://watcher.synthetix.io/markets
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 so these are all the markets on synthetix
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
+#funkmasterFlex
 
 plenty to start with
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
+#funkmasterFlex
 
 The way I'd organize a UI would be categorized by top pairs like ETH/BTC/SOL/LINK/DOGE
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
+#funkmasterFlex
 
 And the others would be categorized by the base asset ie 
 
@@ -54,18 +59,20 @@ etc..
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 To be honest I'd be fine building on top of another liquidity source and see if there is demand
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
+#funkmasterFlex
 
 to get around the oracle stuff I originally thought about the offchain keeper system or flash loans but I also don't know how difficult that is
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
+#funkmasterFlex
 
 and to be honest crypto is so fee insensitive that we could make a good UI and charge a fee on top and people would still use if it's good
 
@@ -145,49 +152,50 @@ Cuáles son los posibles impactos sociales de aplicar PoK para la monetización 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
+#funkmasterFlex
 
 So the reason I ask is because I have a "protocol" sort of dex idea that I've been thinking about
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 Trading pairs like ETH/BTC ETH/SOL whatever on leverage
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 Could be synthetic or auction
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 Marketing would be insane
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 Not new idea but easy UI for it. Push the conversations on all the pairs on twitter. Would just need to integrate one of the synthetics/perps protocols for liquidity but I wanted to ask you if you’ve know anything related to auction based models. We did some of this at index but if we have enough market makers (or us) providing liquidity through flash loans I think we could just have a keeper auction. Sort of above my level but want to start research a bit
 
 ***
 
 **Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
-
+#funkmasterFlex
 The problem is that nobody knows what to build with that stuff haha same w chain link functions
 
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 Yeah exactly because you can run all these trades on aave but it's hard to do and not easy to manage
 
 ***
 
 **Forwarded from [Plat0x.eth | Σ🧠Ξ I WILL NEVER DM YOU FOR MONEY](https://t.me/Plat0x_eth)**
-
+#funkmasterFlex
 So as a summary:
 
 -> offchain dark pool with offchain attestations
@@ -199,11 +207,11 @@ So as a summary:
 ***
 
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
-
+#funkmasterFlex
 https://gov.indexcoop.com/t/iipxx-launch-the-eth-btc-ratio-index/4503
 
 ***
-
+#funkmasterFlex
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
 
 Hey man hope all is good. I'm an advisor to a project and had a question if you have a chance
@@ -212,20 +220,20 @@ Basically, we want to aggregate a bunch of different synthetic or dex assets and
 
 Does layerzero have any examples of projects using keeper bots or offchain aggregation to make markets?
 
-***
+#funkmasterFlex
 
 **Forwarded from [Bill | LayerZero](https://t.me/lzBill)**
 
 yo yooo, so LZ doesnt have examples of this and we dont have automation bots or the ability to bring data on chain. id say this is more up CL or gelato's ally as opposed to us
 
 ***
-
+#funkmasterFlex
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
 
 You can find some more explanation on the peg calculation here https://docs.google.com/document/d/1hnnV-VQhztEn-YFUQhkcPQm9PbDLVfmApNVOCAnho80/edit?usp=sharing
 
 ***
-
+#funkmasterFlex
 **Forwarded from [David - Truflation](https://t.me/funkmasterflex)**
 
 Hey man, so I think it’s gonna be a no from Chainlink. They’re really only giving grants for infra and public goods. I still think it would be a pretty dope protocol to build. I think all the offchain routing stuff would be unnecessary in an mvp. Instead I think just building on top of  synthetix or uniswap liquidity would work. Long one side short the other. 
