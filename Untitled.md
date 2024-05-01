@@ -1,4 +1,4 @@
----BEGIN PAGE: [[20240418]]---
+---BEGIN PAGE: [[Week2]]---
 ### Daily Digest: Innovations and Collaborations
 
 #### **Gamified Staking Concept: UniBoss**
@@ -38,4 +38,4 @@ As we continue to explore innovative concepts like UniBoss and delve into the re
 
 Stay tuned for more updates and opportunities to contribute to our evolving ecosystem.
 
----END PAGE: [[20240418]]---
+---END PAGE: [[Week2]]---
