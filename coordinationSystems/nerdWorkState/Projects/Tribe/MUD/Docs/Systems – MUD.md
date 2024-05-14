@@ -1,0 +1,391 @@
+
+
+# Systems
+
+One of the design principles of MUD is to separate the state of the `World` from the business logic. The business logic is implemented in stateless `System` contracts. `System`s are called through the `World`, and call back to the `World` to read and write state from [tables](/world/tables).
+
+Detailed illustration
+
+![Interaction between the World, a System, and a table](https://mud.dev/world/systems/_next/static/media/world-table.39df342f.svg)
+
+1. An account calls a function called `game__myFunc` on the `World`. [This function was registered](/world/function-selectors) by the owner of the `game` namespace and points to the `myFunc` function in one of the `System`s in the `namespace` namespace.
+    
+2. The `World` verifies that access is permitted (for example, because `game:System` is publicly accessible) and if so calls `myFunc` on the `game:System` contract with the provided parameters.
+    
+3. At some point in its execution `myFunc` decides to update the data in the table `game:Items`. As with all other tables, this table is stored in the `World`'s storage. To modify it, `function` calls a function on the `World` contract.
+    
+4. The `World` verifies that access is permitted (by default it would be, because `game:System` has access to the `game` namespace). If so, it modifies the data in the `game:Items` table.
+    
+
+The `World` serves as a central entry point and forwards calls to systems, which allows it to provide [access control](/world/namespaces-access-control).
+
+## Calling systems[](#calling-systems)
+
+To call a `System`, you call the `World` in one of these ways:
+
+- If a [function selector for the `System` is registered in the `World`](/world/function-selectors), you can call it via `world.<namespace>__<function>(<arguments>)`.
+- You can use [`call` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/World.sol#L333-L345).
+- If you have [the proper delegation](/world/account-delegation) you can use [`callFrom` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/World.sol#L347-L388).
+
+### Using `call`[](#using-call)
+
+To use `call` you create the calldata to send the called `System` and use that as a parameter.
+
+Call.s.sol
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.24;
+ 
+import { Script } from "forge-std/Script.sol";
+import { console } from "forge-std/console.sol";
+import { StoreSwitch } from "@latticexyz/store/src/StoreSwitch.sol";
+ 
+import { IWorld } from "../src/codegen/world/IWorld.sol";
+import { Tasks, TasksData } from "../src/codegen/index.sol";
+ 
+import { ResourceId, WorldResourceIdLib, WorldResourceIdInstance } from "@latticexyz/world/src/WorldResourceId.sol";
+import { RESOURCE_SYSTEM } from "@latticexyz/world/src/worldResourceTypes.sol";
+ 
+contract Call is Script {
+  function run() external {
+    address worldAddress = 0xC14fBdb7808D9e2a37c1a45b635C8C3fF64a1cc1;
+ 
+    // Load the private key from the `PRIVATE_KEY` environment variable (in .env)
+    uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+ 
+    // Start broadcasting transactions from the deployer account
+    vm.startBroadcast(deployerPrivateKey);
+ 
+    ResourceId systemId = WorldResourceIdLib.encode({ typeId: RESOURCE_SYSTEM, namespace: "", name: "TasksSystem" });
+ 
+    bytes memory returnData = IWorld(worldAddress).call(
+      systemId,
+      abi.encodeWithSignature("addTask(string)", "Test task")
+    );
+ 
+    console.log("The return value is:");
+    console.logBytes(returnData);
+ 
+    vm.stopBroadcast();
+  }
+}
+```
+
+Explanation
+
+```
+import { ResourceId, WorldResourceIdLib, WorldResourceIdInstance } from "@latticexyz/world/src/WorldResourceId.sol";
+import { RESOURCE_SYSTEM } from "@latticexyz/world/src/worldResourceTypes.sol";
+.
+.
+.
+ResourceId systemId = WorldResourceIdLib.encode({
+  typeId: RESOURCE_SYSTEM,
+  namespace: "",
+  name: "TasksSystem"
+});
+```
+
+Create a `ResourceId` for the `System`.
+
+```
+bytes memory returnData =
+  IWorld(worldAddress).
+    call(systemId, abi.encodeWithSignature("addTask(string)", "Test task"));
+```
+
+Call the `System`. The calldata is created using [`abi.encodeWithSignature` (opens in a new tab)](https://docs.soliditylang.org/en/latest/cheatsheet.html#index-1).
+
+The return data is of type [`bytes memory` (opens in a new tab)](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html#bytes-and-string).
+
+## Writing systems[](#writing-systems)
+
+A `System` should _not_ have any internal state, but store all of it in tables in the `World`. There are several reasons for this:
+
+- It allows a `World` to enforce access controls.
+- It allows the same `System` to be used by multiple `World` contracts.
+- Upgrades are a lot simpler when all the state is centralized outside of the `System` contract.
+
+Because calls to systems are proxied through the `World`, some message fields don't reflect the original call. Use these substitutes:
+
+|Vanilla Solidity|`System` replacement|
+|---|---|
+|`msg.sender`|`_msgSender()`|
+|`msg.value`|`_msgValue()`|
+
+When calling other contracts from a `System`, be aware that if you use `delegatecall` the called contract inherits the `System`'s permissions and can modify data in the `World` on behalf of the `System`.
+
+### Calling one `System` from another[](#calling-one-system-from-another)
+
+There are two ways to call one `System` from another one.
+
+|Call type|`call` to the `World`|`delegatecall` directly to the `System`|
+|---|---|---|
+|Permissions|those of the called `System`|those of the calling `System`|
+|`_msgSender()`|calling `System` (unless you can use `callFrom`, which is only available when the user [delegates](/world/account-delegation) to your `System`)|can use [`WorldContextProvider` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/WorldContext.sol#L180-L203) to transfer the correct information|
+|`_msgValue()`|zero|can use [`WorldContextProvider` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/WorldContext.sol#L180-L203) to transfer the correct information|
+|Can be used by systems in the root namespace|No (it's a security measure)|Yes|
+
+#### Calling from a root `System`[](#calling-from-a-root-system)
+
+For [security reasons](/retrospectives/2023-09-12-register-system-vulnerability) the `World` cannot call itself. A `System` in the root namespace runs in the `World` context, and therefore cannot call the `World` either.
+
+🚫
+
+You _could_ use [`delegatecall` (opens in a new tab)](https://docs.soliditylang.org/en/v0.8.16/introduction-to-smart-contracts.html#delegatecall-callcode-and-libraries), but you should only do it if it's necessary. A root `System` acts as the `World`, so a `delegatecall` from a root `System` behaves exactly like a `delegatecall` from the `World`. Any contract you `delegatecall` inherits your permissions, in this case unlimited access to the `World` and the ability to change everything.
+
+An alternative solution is for the root `System` to do exactly what the `World` does with a normal call: check for access permission, run before hook (if configured), call the `System`, and then run the after hook (if configured). To do that, you can use [`SystemCall.callWithHooks()` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/SystemCall.sol#L77-L114).
+
+If you need to specify values for [`_msgSender()`](/world/reference/world-context#_msgsender) and [`_msgValue()`](/world/reference/world-context#_msgvalue) to provide for the called `System`, you can use [`WorldContextProviderLib.callWithContext` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/WorldContext.sol#L122-L140). Note that this function is _extremely_ low level, and if you use it you have to process hooks and access control yourself.
+
+#### `SystemSwitch`[](#systemswitch)
+
+If your `System` needs run both from the root namespace and from other namespaces, you can call other `System`s using [`SystemSwitch` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world-modules/src/utils/SystemSwitch.sol).
+
+1. Import `SystemSwitch`.
+    
+    ```
+    import { SystemSwitch } from "@latticexyz/world-modules/src/utils/SystemSwitch.sol";
+    ```
+    
+2. Import the interface for the system you wish to call.
+    
+    ```
+    import { IIncrementSystem } from "../codegen/world/IIncrementSystem.sol";
+    ```
+    
+3. Call the function using `SystemSwitch.call`. For example, here is how you can call [`IncrementSystem.increment()`](/templates/typescript/contracts#incrementsystemsol).
+    
+    ```
+     uint32 returnValue = abi.decode(
+       SystemSwitch.call(
+         abi.encodeCall(IIncrementSystem.increment, ())
+       ),
+       (uint32)
+     );
+    ```
+    
+    Explanation
+    
+    ```
+    abi.encodeCall(IIncrementSystem.increment, ())
+    ```
+    
+    Use [`abi.encodeCall` (opens in a new tab)](https://docs.soliditylang.org/en/latest/cheatsheet.html#abi-encoding-and-decoding-functions) to create the calldata. The first parameter is a pointer to the function. The second parameter is a [tuple (opens in a new tab)](https://docs.soliditylang.org/en/latest/control-structures.html#destructuring-assignments-and-returning-multiple-values) with the function parameters. In this case, there aren't any.
+    
+    The advantage of `abi.encodeCall` is that it checks the types of the function parameters are correct.
+    
+    ```
+    SystemSwitch.call(
+         abi.encodeCall(...)
+    )
+    ```
+    
+    Using `SystemSwitch.call` with the calldata created by `abi.encodeCall`. `SystemSwitch.call` takes care of figuring out details, such as what type of call to use.
+    
+    ```
+    uint32 retval = abi.decode(
+       SystemSwitch.call(...),
+       (uint32)
+    );
+    ```
+    
+    Use [`abi.decode` (opens in a new tab)](https://docs.soliditylang.org/en/latest/cheatsheet.html#abi-encoding-and-decoding-functions) to decode the call's return value. The second parameter is the data type (or types if there are multiple return values).
+    
+
+## Registering systems[](#registering-systems)
+
+For a `System` to be callable from a `World` it has to be [registered (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/modules/init/implementations/WorldRegistrationSystem.sol#L115-L178). Only the [namespace owner](/world/namespaces-access-control#ownership) can register a `System` in a namespace.
+
+`System`s can be registered once per `World`, but the same system can be registered in multiple `World`s. If you need multiple instances of a `System` in the same world, you can deploy the `System` multiple times and register the individual deployments individually.
+
+MessagingExtension.s.sol
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.21;
+ 
+import { Script } from "forge-std/Script.sol";
+import { console } from "forge-std/console.sol";
+import { IBaseWorld } from "@latticexyz/world-modules/src/interfaces/IBaseWorld.sol";
+import { WorldRegistrationSystem } from "@latticexyz/world/src/modules/core/implementations/WorldRegistrationSystem.sol";
+ 
+// Create resource identifiers (for the namespace and system)
+import { ResourceId } from "@latticexyz/store/src/ResourceId.sol";
+import { WorldResourceIdLib } from "@latticexyz/world/src/WorldResourceId.sol";
+import { RESOURCE_SYSTEM } from "@latticexyz/world/src/worldResourceTypes.sol";
+ 
+// For registering the table
+import { Messages, MessagesTableId } from "../src/codegen/index.sol";
+import { IStore } from "@latticexyz/store/src/IStore.sol";
+import { StoreSwitch } from "@latticexyz/store/src/StoreSwitch.sol";
+ 
+// For deploying MessageSystem
+import { MessageSystem } from "../src/systems/MessageSystem.sol";
+ 
+contract MessagingExtension is Script {
+  function run() external {
+    uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+    address worldAddress = vm.envAddress("WORLD_ADDRESS");
+    WorldRegistrationSystem world = WorldRegistrationSystem(worldAddress);
+    ResourceId namespaceResource = WorldResourceIdLib.encodeNamespace(bytes14("messaging"));
+    ResourceId systemResource = WorldResourceIdLib.encode(RESOURCE_SYSTEM, "messaging", "MessageSystem");
+ 
+    vm.startBroadcast(deployerPrivateKey);
+ 
+    world.registerNamespace(namespaceResource);
+    StoreSwitch.setStoreAddress(worldAddress);
+    Messages.register();
+    MessageSystem messageSystem = new MessageSystem();
+    world.registerSystem(systemResource, messageSystem, true);
+    world.registerFunctionSelector(systemResource, "incrementMessage(string)");
+ 
+    vm.stopBroadcast();
+  }
+}
+```
+
+`System` registration requires several steps:
+
+1. Create the resource ID for the `System`.
+2. Deploy the `System` contract.
+3. Use [`WorldRegistrationSystem.registerSystem` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/modules/init/implementations/WorldRegistrationSystem.sol#L115-L178) to register the `System`. This function takes three parameters:
+    - The ResourceId for the `System`.
+    - The address of the `System` contract.
+    - Access control - whether access to the `System` is public (`true`) or limited to entities with access either to the namespace or the `System` itself (`false`).  
+        
+4. Optionally, register [function selectors](/world/function-selectors) for the `System`.
+
+### Upgrading systems[](#upgrading-systems)
+
+The namespace owner can upgrade a `System`. This is a two-step process: deploy the contract for the new `System` and then call `registerSystem` with the same `ResourceId` as the old one and the new contract address.
+
+This upgrade process removes the old `System` contract's access to the namespace, and gives access to the new contract. Any access granted _manually_ to the old `System` is not revoked, nor granted to the upgraded `System`.
+
+**Note:** You _should_ make sure to remove any such manually granted access. MUD access is based on the contract address, so somebody else could register a namespace they'd own, register the old `System` contract as a system in their namespace, and then abuse those permissions (if the `System` has code that can be used for that, of course).
+
+Sample code
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.24;
+ 
+import { Script } from "forge-std/Script.sol";
+import { console } from "forge-std/console.sol";
+import { System } from "@latticexyz/world/src/System.sol";
+ 
+import { IWorld } from "../src/codegen/world/IWorld.sol";
+import { Counter } from "../src/codegen/index.sol";
+ 
+import { ResourceId, WorldResourceIdLib, WorldResourceIdInstance } from "@latticexyz/world/src/WorldResourceId.sol";
+import { RESOURCE_SYSTEM } from "@latticexyz/world/src/worldResourceTypes.sol";
+ 
+contract IncrementSystem2 is System {
+  function increment() public returns (uint32) {
+    uint32 counter = Counter.get();
+    uint32 newValue = counter + 2;
+    Counter.set(newValue);
+    return newValue;
+  }
+}
+ 
+contract UpdateASystem is Script {
+  function run() external {
+    address worldAddress = 0xC14fBdb7808D9e2a37c1a45b635C8C3fF64a1cc1;
+ 
+    // Load the private key from the `PRIVATE_KEY` environment variable (in .env)
+    uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+ 
+    // Start broadcasting transactions from the deployer account
+    vm.startBroadcast(deployerPrivateKey);
+ 
+    // Deploy IncrementSystem2
+    IncrementSystem2 incrementSystem2 = new IncrementSystem2();
+ 
+    ResourceId systemId = WorldResourceIdLib.encode({
+      typeId: RESOURCE_SYSTEM,
+      namespace: "",
+      name: "IncrementSystem"
+    });
+ 
+    IWorld(worldAddress).registerSystem(systemId, incrementSystem2, true);
+ 
+    vm.stopBroadcast();
+  }
+}
+```
+
+Explanation
+
+```
+import { ResourceId, WorldResourceIdLib, WorldResourceIdInstance } from "@latticexyz/world/src/WorldResourceId.sol";
+import { RESOURCE_SYSTEM } from "@latticexyz/world/src/worldResourceTypes.sol";
+```
+
+To upgrade a `System` we need the resource ID for it.
+
+```
+contract IncrementSystem2 is System {
+  function increment() public returns (uint32) {
+    uint32 counter = Counter.get();
+    uint32 newValue = counter + 2;
+    Counter.set(newValue);
+    return newValue;
+  }
+}
+```
+
+The new `System`. It needs to implement the same `public` functions as the `System` being replaced.
+
+```
+    ...
+ 
+    // Deploy IncrementSystem2
+    IncrementSystem2 incrementSystem2 = new IncrementSystem2();
+```
+
+Deploy the new `System`.
+
+```
+    ResourceId systemId = WorldResourceIdLib.encode(
+      { typeId: RESOURCE_SYSTEM,
+        namespace: "",
+        name: "IncrementSystem"
+      });
+```
+
+Get the `ResourceId` for the `System`.
+
+```
+    IWorld(worldAddress).registerSystem(systemId, incrementSystem2, true);
+```
+
+Register the new `System`. This removes the existing `System` and the access automatically granted to it.
+
+## Access control[](#access-control)
+
+When you register a `System`, you can specify whether it is going to be private or public.
+
+- A public `System` has no access control checks, it can be called by anybody. This is the main mechanism for user interaction with a MUD application.
+    
+- A private `System` can only be called by accounts that have access. This access can be the result of:
+    
+    - Access permission to the namespace in which the `System` is registered.
+    - Access permission specifically to the `System`.
+
+Note that `System`s have access to their own namespace by default, so public `System`s can call private `System`s in their namespace.
+
+## Root systems[](#root-systems)
+
+The `World` uses `call` for systems in other namespaces, but `delegatecall` for those in the root namespace (`bytes14(0)`). As a result, root systems have access to the `World` contract's storage. Because of this access, root systems use [the internal `StoreCore` methods (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/store/src/StoreCore.sol), which are slightly cheaper than calling [the external `IStore` methods (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/store/src/IStore.sol) used by other systems. Note that the table libraries abstract this difference, so normally there is no reason to be concerned about it.
+
+Another effect of having access to the storage of the `World` is that root systems could, in theory, overwrite any information in any table regardless of access control. Only the [owner of the root namespace](/world/namespaces-access-control) can register root systems. We recommend to only use the root namespace when strictly necessary.
+
+[Tables](/world/tables "Tables")[System Hooks](/world/system-hooks "System Hooks")
+
+---
+
+MIT 2023 © MUD
+
+Systems – MUD
