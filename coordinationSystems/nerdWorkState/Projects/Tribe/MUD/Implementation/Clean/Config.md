@@ -17,10 +17,10 @@ export default defineWorld({
     Player: {
       schema: {
         id: "bytes32",
-        name: "string",
         x: "int32",
         y: "int32",
         health: "uint32",
+        name: "string",
       },
       key: ["id"],
     },
@@ -40,19 +40,20 @@ Next, we need to create a system that will handle the spawning of the player. Th
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
-import { System, World } from "@latticexyz/world";
-import { PlayerTable } from "./tables/PlayerTable.sol";
+import { System } from "@latticexyz/world/src/System.sol";
+import { Player, PlayerData } from "../codegen/index.sol";
 
 contract SpawnPlayerSystem is System {
-    function spawnPlayer(bytes32 playerId, string memory name, int32 x, int32 y, uint32 health) public {
-        // Ensure the player does not already exist
-        require(PlayerTable.get(playerId).id == bytes32(0), "Player already exists");
+  function spawnPlayer(bytes32 id, PlayerData calldata data) public {
+    // Ensure the player does not already exist
+    PlayerData memory existingPlayer = Player.get(id);
+    require(existingPlayer.health == 0, "Player already exists"); // Assuming health is 0 for non-existent players
 
-        // Create the player
-        PlayerTable.set(playerId, name, x, y, health);
-    }
+    // Create the player
+    Player.set(id, PlayerData({ x: data.x, y: data.y, health: data.health, name: data.name }));
+  }
 }
+
 ```
 
 ### Step 3: Update the Deployment Script
@@ -141,3 +142,132 @@ main()
 ```
 
 This setup will allow you to define a player entity and spawn it in the world. You can incrementally add more features and entities as needed.
+
+```ts
+import { ClientComponents } from "./createClientComponents";
+import { SetupNetworkResult } from "./setupNetwork";
+import { Has, HasValue, getComponentValue, runQuery } from "@latticexyz/recs";
+import { singletonEntity } from "@latticexyz/store-sync/recs";
+import { uuid } from "@latticexyz/utils";
+import { toast } from "react-hot-toast";
+import { hexToString, isHex, stringToHex } from "viem";
+
+export type SystemCalls = ReturnType<typeof createSystemCalls>;
+
+export function createSystemCalls(
+  { playerEntity, worldContract, waitForTransaction }: SetupNetworkResult,
+  { Player }: ClientComponents,
+) {
+  const spawn = async () => {
+    if (!playerEntity) {
+      throw new Error("no player");
+    }
+
+    const canSpawn = getComponentValue(Player, playerEntity)?.value !== true;
+
+    const player = await getComponentValue(Player, "name");
+    if (!canSpawn) {
+      throw new Error("already spawned");
+    }
+
+    const positionId = uuid();
+    /*Position.addOverride(positionId, {
+      entity: playerEntity,
+      value: { x, y },
+    });*/
+    const playerId = uuid();
+    Player.addOverride(playerId, {
+      entity: playerEntity,
+      value: { value: true },
+    });
+
+    console.log(playerEntity, player);
+
+    const args: PlayerData = {
+      x: 0,
+      y: 0,
+      health: 100,
+      name: "Player",
+    };
+    toast.loading("Spawning player...");
+
+    try {
+      const tx = await worldContract.write.spawnPlayer([stringToHex(playerId.slice(4), { size: 32 }), args]);
+      await waitForTransaction(tx);
+    } catch (error) {
+      // Handle the error if the transaction fails
+      console.error("Spawn transaction failed:", error);
+    } finally {
+      setTimeout(() => {
+        //Position.removeOverride(positionId);
+        Player.removeOverride(playerId);
+        toast.dismiss();
+        toast.success(`"Player spawned! ${Player.schema.name}"`);
+      }, 1000);
+    }
+  };
+
+  return {
+    spawn,
+  };
+}
+
+```
+
+```ts
+import { useMUD } from "./MUDContext";
+import { useComponentValue, useEntityQuery } from "@latticexyz/react";
+import { Entity, Has, getComponentValueStrict } from "@latticexyz/recs";
+import { singletonEntity } from "@latticexyz/store-sync/recs";
+import { hexToArray } from "@latticexyz/utils";
+
+export const GameBoard = () => {
+  //useKeyboardMovement();
+
+  const {
+    components: { Player },
+    network: { playerEntity },
+    systemCalls: { spawn },
+  } = useMUD();
+
+  const canSpawn = useComponentValue(Player, playerEntity)?.value !== true;
+  console.log(playerEntity);
+
+  /*const players = useEntityQuery([Has(Player), Has(Position)]).map(entity => {
+    const position = getComponentValueStrict(Position, entity);
+    return {
+      entity,
+      x: position.x,
+      y: position.y,
+      emoji: entity === playerEntity ? "🤠" : "🥸",
+    };
+  });
+  console.log(players);*/
+
+  return (
+    <>
+      <button onClick={() => canSpawn && spawn()}>Spawn</button>
+    </>
+  );
+};
+
+export default GameBoard;
+```
+
+```ts
+import { ReactNode, useEffect, useState } from "react";
+import { useMUD } from "./MUDContext";
+import { Entity } from "@latticexyz/recs";
+import { twMerge } from "tailwind-merge";
+
+
+
+export const GameMap = () => {
+  const {
+    network: { playerEntity },
+  } = useMUD();
+          return (
+            <></>
+            );
+};
+```
