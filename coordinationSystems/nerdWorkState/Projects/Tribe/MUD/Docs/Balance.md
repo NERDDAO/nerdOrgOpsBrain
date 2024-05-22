@@ -1,0 +1,243 @@
+
+
+# Balance
+
+ETH is stored in the `World` contract and owned by namespaces. Any ETH sent with a call to a `System` is kept on the `World`, and credited to the namescape to which the `System` belongs. This has two important effects:
+
+- The ETH balance is shared between the different `System` contracts in the same namespace of the same `World`.
+- The same `System` can be used in multiple `World` contracts and the ETH balances remain separate.
+
+To know how much ETH a call has included a `System` can check [`_msgValue()` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/WorldContext.sol#L34-L36).
+
+To know how much ETH a specific namespace has you can look in `world:Balances` (the `Balances` table of the `world` namespace).
+
+```
+import { Balances } from "@latticexyz/world/src/codegen/tables/Balances.sol";
+ 
+uint256 balance = Balances.get(<namespace>);
+```
+
+See this in action
+
+1. Have a MUD application running. The easiest way to do this is to [run the template locally](/templates/typescript/getting-started).
+    
+2. Here we are not concerned with the client, so change to the `contracts` page. Because we are not concerned with the client, all the file names will be relative to `.../packages/contracts`.
+    
+    ```
+    cd packages/contracts
+    ```
+    
+3. Create a `.env` file with:
+    
+    - `PRIVATE_KEY` - the private key of an account that has ETH on the blockchain.
+    - `WORLD_ADDRESS` - the address of the `World` to which you add the namespace.
+    
+    If you are using the template with a fresh `pnpm dev`, then you can use this `.env`:
+    
+    .env
+    
+    ```
+    # This .env file is for demonstration purposes only.
+    #
+    # This should usually be excluded via .gitignore and the env vars attached to
+    # your deployment environment, but we're including this here for ease of local
+    # development. Please do not commit changes to this file!
+    #
+    # Enable debug logs for MUD CLI
+    DEBUG=mud:*
+    #
+    # Anvil default private key:
+    PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+     
+    # Address for the world we are extending
+    WORLD_ADDRESS=0xC14fBdb7808D9e2a37c1a45b635C8C3fF64a1cc1
+    ```
+    
+4. Create this file as `scripts/GetBalance.s.sol`.
+    
+    GetBalance.s.sol
+    
+    ```
+    // SPDX-License-Identifier: MIT
+    pragma solidity >=0.8.21;
+     
+    import { Script } from "forge-std/Script.sol";
+    import { console } from "forge-std/console.sol";
+    import { Balances } from "@latticexyz/world/src/codegen/tables/Balances.sol";
+    import { StoreSwitch } from "@latticexyz/store/src/StoreSwitch.sol";
+    import { ResourceId } from "@latticexyz/store/src/ResourceId.sol";
+    import { WorldResourceIdLib } from "@latticexyz/world/src/WorldResourceId.sol";
+     
+    contract GetBalance is Script {
+      function run() external {
+        address worldAddress = vm.envAddress("WORLD_ADDRESS");
+        StoreSwitch.setStoreAddress(worldAddress);
+        console.log("World at:", worldAddress);
+        ResourceId namespaceResource = WorldResourceIdLib.encodeNamespace(bytes14(""));
+        console.log("Namespace ID: %x", uint256(ResourceId.unwrap(namespaceResource)));
+        uint256 balance = Balances.get(namespaceResource);
+        console.log("Balance: %d wei", balance);
+      }
+    }
+    ```
+    
+    Explanation
+    
+    ```
+    // SPDX-License-Identifier: MIT
+    pragma solidity >=0.8.21;
+    ```
+    
+    Standard Solidity boilerplate
+    
+    ```
+    import { Script } from "forge-std/Script.sol";
+    import { console } from "forge-std/console.sol";
+    ```
+    
+    Standard [`forge` script (opens in a new tab)](https://book.getfoundry.sh/tutorials/solidity-scripting) boilerplate.
+    
+    ```
+    import { Balances } from "@latticexyz/world/src/codegen/tables/Balances.sol";
+    ```
+    
+    The `Balances` table contains namespace balances. Note that while this table's Solidity code is available as part of the library, it is a standard MUD table and as such gets created from [a `mud.config.ts` file (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/mud.config.ts#L55-L62).
+    
+    ```
+    import { StoreSwitch } from "@latticexyz/store/src/StoreSwitch.sol";
+    ```
+    
+    We need [this file (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/store/src/StoreSwitch.sol) to specify the `World`'s address.
+    
+    ```
+    import { ResourceId } from "@latticexyz/store/src/ResourceId.sol";
+    import { WorldResourceIdLib } from "@latticexyz/world/src/WorldResourceId.sol";
+    ```
+    
+    We need the namespace's `ResourceId`.
+    
+    ```
+    contract GetBalance is Script {
+        function run() external {
+            address worldAddress = vm.envAddress("WORLD_ADDRESS");
+    ```
+    
+    Get `WORLD_ADDRESS` from `.env`.
+    
+    ```
+           StoreSwitch.setStoreAddress(worldAddress);
+           console.log("World at:", worldAddress);
+    ```
+    
+    [Set the address of the `World` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/store/src/StoreSwitch.sol#L58-L65) so future data calls to go to the correct location.
+    
+    ```
+           ResourceId namespaceResource = WorldResourceIdLib.encodeNamespace(bytes14(""));
+           console.log("Namespace ID: %x", uint256(ResourceId.unwrap(namespaceResource)));
+    ```
+    
+    Create the `ResourceId` for the root namespace.
+    
+    ```
+           uint256 balance = Balances.get(namespaceResource);
+           console.log("Balance: %d wei", balance);
+       }
+    }
+    ```
+    
+    Finally, get the balance from the `world:Balances` table.
+    
+5. Source the `.env` file (we are going to use the variables there to transfer ETH to the root namespace's account).
+    
+    ```
+    source .env
+    ```
+    
+6. Run the script.
+    
+    ```
+    forge script script/GetBalance.s.sol --rpc-url http://localhost:8545
+    ```
+    
+    The balance should be zero for now.
+    
+7. To allow `increment` to accept wei, edit `src/systems/IncrementSystem.sol` to make it `payable`:
+    
+    IncrementSystem.sol
+    
+    ```
+    // SPDX-License-Identifier: MIT
+    pragma solidity >=0.8.21;
+     
+    import { System } from "@latticexyz/world/src/System.sol";
+    import { Counter } from "../codegen/index.sol";
+     
+    contract IncrementSystem is System {
+      function increment() public payable returns (uint32) {
+        uint32 counter = Counter.get();
+        uint32 newValue = counter + 1;
+        Counter.set(newValue);
+        return newValue;
+      }
+    }
+    ```
+    
+8. `pnpm dev` deploys the new code, but it might deploy it to a new `World`. Restart `pnpm dev` to ensure you have a `World` in the same address as before.
+    
+9. Call `increment` with ETH.
+    
+    ```
+    cast send --private-key $PRIVATE_KEY $WORLD_ADDRESS --value 1ether "increment()"
+    ```
+    
+10. Run the script again to see that the balance is higher.
+    
+    ```
+    forge script script/GetBalance.s.sol --rpc-url http://localhost:8545
+    ```
+    
+
+To transfer ETH out of the `World` you need to have the `access` permission level to the namespace itself. Note that `System` contracts within the namespace do have that permission.
+
+You use either [`transferBalanceToNamespace` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/modules/init/implementations/BalanceTransferSystem.sol#L25-L57), if you want to transfer between namespaces in the same `World`, or [`transferBalanceToAddress` (opens in a new tab)](https://github.com/latticexyz/mud/blob/main/packages/world/src/modules/init/implementations/BalanceTransferSystem.sol#L59-L86), to transfer to a different address.
+
+See this in action
+
+These steps assume you already transferred 1 ether to the root namespace.
+
+1. Run this command to transfer 10 wei to the zero address.
+    
+    ```
+    cast send --private-key $PRIVATE_KEY $WORLD_ADDRESS "transferBalanceToAddress(bytes32,address,uint256)" 0x6e73000000000000000000000000000000000000000000000000000000000000 `cast address-zero` 10
+    ```
+    
+2. See that the namespace's balance is lower by 10 wei.
+    
+    ```
+    forge script script/GetBalance.s.sol --rpc-url http://localhost:8545
+    ```
+    
+3. See that 10 wei have been deducted from the balance of the `World`.
+    
+    ```
+    cast balance $WORLD_ADDRESS
+    ```
+    
+
+If you need to transfer ETH in a `System` that has access to a namespace (for example, because it is in that namespace), you can use a function similar to this:
+
+```
+function _transfer(address to, uint amount) private {
+  IWorld(_world()).transferBalanceToAddress(WorldResourceIdLib.encodeNamespace("<namespace goes here>"), to, amount);
+}
+```
+
+Last updated on May 10, 2024
+
+[Function Selectors](/world/function-selectors "Function Selectors")[Account Delegation](/world/account-delegation "Account Delegation")
+
+---
+
+MIT 2023 © MUD
+
+Balance – MUD
