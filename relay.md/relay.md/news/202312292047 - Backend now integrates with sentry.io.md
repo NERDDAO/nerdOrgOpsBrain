@@ -1,5 +1,7 @@
 ---
 creation_date: 2023-12-29 20:47
+data_creació: 2024-06-25 09:24
+data_modificació: 2024-06-25 10:24
 modification date: Friday 29th December 2023 20:47:48
 relay-document: 9c59bfae-a7bc-4444-b476-16f7c26d0f28
 relay-to:

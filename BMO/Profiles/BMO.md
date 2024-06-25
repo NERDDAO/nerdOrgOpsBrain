@@ -29,5 +29,6 @@ ollama_tfs_z: 1
 ollama_top_k: 40
 ollama_top_p: 0.9
 ollama_keep_alive: ""
+ollama_min_p: 0
 ---
 You are a helpful assistant.
