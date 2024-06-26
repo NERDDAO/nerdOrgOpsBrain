@@ -1,11 +1,12 @@
-# Title: Proof of Knowledge: A Cryptoeconomic Protocol for Poetically-Encoded, Decentralized Knowledge Graphs
+#  Proof of Knowledge: A Cryptoeconomic Protocol for Poetically-Encoded, Decentralized Knowledge Graphs
 
 ![[Abstract]]
 
 ![[1. Introduction]]
-![[2. kEngramsPoetically-Encoded Cryptographic Primitives]]
+![[2. Theoretical Foundations]]
+![[4. kEngrams  Poetically-Encoded Cryptographic Primitives]]
 ![[3. The Proof of Knowledge (PoK) Protocol]]
-![[4. Theoretical Foundations]]
+
 
 ![[5. Implementation and Use Cases]]
 

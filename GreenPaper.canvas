@@ -2,9 +2,9 @@
 	"nodes":[
 		{"id":"coordinationSystems/GreenPaper/Abstract.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/Abstract.md","x":1000,"y":0,"width":500,"height":500},
 		{"id":"coordinationSystems/GreenPaper/1. Introduction.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/1. Introduction.md","x":1000,"y":600,"width":500,"height":500},
-		{"id":"coordinationSystems/GreenPaper/2. kEngramsPoetically-Encoded Cryptographic Primitives.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/2. kEngramsPoetically-Encoded Cryptographic Primitives.md","x":1000,"y":1200,"width":500,"height":500},
+		{"id":"coordinationSystems/GreenPaper/2. kEngramsPoetically-Encoded Cryptographic Primitives.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/4. kEngrams  Poetically-Encoded Cryptographic Primitives.md","x":1000,"y":1200,"width":500,"height":500},
 		{"id":"coordinationSystems/GreenPaper/3. The Proof of Knowledge (PoK) Protocol.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/3. The Proof of Knowledge (PoK) Protocol.md","x":1000,"y":1800,"width":500,"height":500},
-		{"id":"coordinationSystems/GreenPaper/4. Theoretical Foundations.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/4. Theoretical Foundations.md","x":1000,"y":2400,"width":500,"height":500},
+		{"id":"coordinationSystems/GreenPaper/4. Theoretical Foundations.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/2. Theoretical Foundations.md","x":1000,"y":2400,"width":500,"height":500},
 		{"id":"coordinationSystems/GreenPaper/5. Implementation and Use Cases.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/5. Implementation and Use Cases.md","x":1000,"y":3000,"width":500,"height":500},
 		{"id":"coordinationSystems/GreenPaper/6. Evaluation and Future Work.md","type":"file","file":"coordinationSystems/nerdWorkState/Projects/GreenPaper/6. Evaluation and Future Work.md","x":1000,"y":3600,"width":500,"height":500},
 		{"id":"ed0f19144130ff9d","type":"text","text":"Poetry","x":-621,"y":336,"width":250,"height":50,"color":"5"},

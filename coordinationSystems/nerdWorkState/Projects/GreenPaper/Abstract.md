@@ -7,11 +7,11 @@ This paper introduces the kEngram ecosystem and Proof of Knowledge (PoK) protoco
     1.1 Challenges in Large-Scale Knowledge Management  
     1.2 The Need for Decentralized, Secure, and Incentivized Knowledge Graphs
     
-2. kEngrams: Poetically-Encoded Cryptographic Primitives  
-    2.1 Poetic Encoding for Information Density  
-    2.2 Cryptographic Foundations  
-    2.3 Modular Design for Knowledge Graph Construction  
-    2.4 Optimizing Efficiency in Decentralized Networks
+1. Theoretical Foundations  
+    2.1 Information Theory and Poetic Encoding  
+    2.2 Kolmogorov Complexity and Information Compression  
+    3.3 Hyperstructural Theory and Knowledge Graphs  
+    4.4 Stigmergic Coordination in kEngram Networks
     
 3. The Proof of Knowledge (PoK) Protocol  
     3.1 Core Concept  
@@ -19,11 +19,13 @@ This paper introduces the kEngram ecosystem and Proof of Knowledge (PoK) protoco
     3.3 Decentralized Consensus  
     3.4 Implementation on Ethereum
     
-4. Theoretical Foundations  
-    4.1 Information Theory and Poetic Encoding  
-    4.2 Kolmogorov Complexity and Information Compression  
-    4.3 Hyperstructural Theory and Knowledge Graphs  
-    4.4 Stigmergic Coordination in kEngram Networks
+3. kEngrams: Poetically-Encoded Cryptographic Primitives  
+    3.1 Poetic Encoding for Information Density  
+    3.2 Cryptographic Foundations  
+    3.3 Modular Design for Knowledge Graph Construction  
+    3.4 Optimizing Efficiency in Decentralized Networks
+    
+
     
 5. Implementation and Use Cases  
     5.1 Protocol Design  
