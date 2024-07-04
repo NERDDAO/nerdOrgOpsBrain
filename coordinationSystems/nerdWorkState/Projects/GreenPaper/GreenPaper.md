@@ -4,7 +4,7 @@
 
 ![[1. Introduction]]
 ![[2. Theoretical Foundations]]
-![[4. kEngrams  Poetically-Encoded Cryptographic Primitives]]
+![[4. kEngrams  Poetically-Encoded Knowledge Primitives]]
 ![[3. The Proof of Knowledge (PoK) Protocol]]
 
 

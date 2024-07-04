@@ -1,31 +1,31 @@
 ---
 creation_date: 2024-03-13 20:41
 data_creació: 2024-06-25 09:24
-data_modificació: 2024-06-25 17:20
+data_modificació: 2024-06-29 23:29
 modification date: Wednesday 13th March 2024 20:41:47
 relay-document: 9d95d854-c5f7-4e93-9577-8a3f49ec88e8
 relay-to:
   - news@relay.md
 summary: 
-tags:
+ta  gs:
   - relaymd/journal
 type: uniquenote
 ---
 
-Chers relais,
+Dear relayers,
 
-És hora ⏰ d'una actualització ràpida sobre el progrés de relay.md:
+Its time ⏰ for a quick update on the progress of relay.md:
 
-🎉 **Més comunitats**:
-Hem afegit Facebook, Twitter/X i un grup de Telegram al nostre lloc web. Uneix-te ara i interactua amb el fundador i altres relais.
+🎉 **More communities**:
+We have added Facebook, Twitter/X, and a Telegram group to our site. Join now and engage with the founder and other relayers.
 
-🎉 **Suport d'actius**:
-Les últimes setmanes hem finalitzat el desenvolupament i hem afegit suport per als actius (també coneguts com a incrustacions). Simplement afegeix els teus fitxers a la teva nota i retransmet-los com de costum. El connector i el servei es faran càrrec d'ells sense problemes.
+🎉 **Asset Support**:
+In the last weeks, we have finalized development, and shipped support for assets (also known as embeds). Just add your files to your note and relay them as usual. The plugin and service will deal with them seemlessly.
 
-🎉 **Configuració del connector Obsidian amb un clic**:
-Hem ajustat el nostre lloc de configuració del connector amb un clic i ara cobrim tots els casos d'ús, inclosa la configuració manual del teu client Obsidian.
+🎉 **One-click Obsidian Plugin Configuration**:
+We have fine-tuned our one-click plugin configuration site and now cover all use-cases including manual configuration of your Obsidian client.
 
-🎉 **Nou connector Obsidian**:
-Gràcies als nostres amics de la comunitat d'Obsidian, hem refactoritzat el nostre connector d'Obsidian perquè sigui més fàcil d'ampliar i mantenir. Això ha il·luminat alguns errors que hem intentat resoldre durant un temps. En última instància, la nostra última versió és més estable, més fiable i més fàcil de desenvolupar.
+🎉 **New Obsidian plugin**:
+Thanks to our friends in the Obsidian community, we refactored our Obsidian plugin to be easier to extend and maintain. This shed some light onto bugs we have been trying to resolve for a while. Ultimately, our latest release is more stable, more reliable and easier to develop on.
 
-Això és tot per ara. Tornem a prendre notes 💕
+That's it for now. Let's get back to taking notes 💕
